@@ -3,6 +3,8 @@ import { useMenu } from "../../context/MenuContext";
 import { useTimer } from "../../context/PomodoroContext";
 import { useTheme } from "../../context/ThemeContext";
 import "./Timer.css";
+import Button from "../Button/Button";
+import BackgroundMusic from "../BackgroundMusic/BackgroundMusic";
 
 const Timer = () => {
 	const { pomodoroTime, setPomodoroTime } = useTimer();
@@ -28,12 +30,18 @@ const Timer = () => {
 	}, [isActive]);
 
 	const startTimer = () => {
-		console.log('Tema',theme);
 		if (checked) {
 			toggleTheme();
 		}
 		setIsActive(true);
 	};
+
+	const stopTimer = () => {
+		if (checked) {
+			toggleTheme();
+		}
+		setIsActive(false);
+	}
 
   const convertTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -45,9 +53,10 @@ const Timer = () => {
 		<div className="timer_container">
 			<h1>{convertTime(pomodoroTime)}</h1>
 			<div className="start_buttons">
-				<button className="start" onClick={startTimer}>Start</button>
-				<button onClick={() => setIsActive(false)}>Stop</button>
+				<Button text="Start" onClick={startTimer} />
+				<Button text="Stop" onClick={stopTimer} />
 			</div>
+			{isActive && <BackgroundMusic play={isActive} />}
 		</div>
 	);
 };

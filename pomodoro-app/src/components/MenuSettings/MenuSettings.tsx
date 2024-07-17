@@ -4,6 +4,7 @@ import { IoCloseOutline, IoSettingsOutline } from "react-icons/io5";
 import { useMenu } from "../../context/MenuContext";
 import { useTimer } from "../../context/PomodoroContext";
 import "./MenuSettings.css";
+import Button from "../Button/Button";
 
 const MenuSettings = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -33,9 +34,7 @@ const MenuSettings = () => {
 	return (
 		<>
 			<div className="settings_container">
-				<button onClick={() => setIsOpen(!isOpen)} className="settings_button">
-					<IoSettingsOutline size={24} />
-				</button>
+				<Button onClick={() => setIsOpen(!isOpen)} children={<IoSettingsOutline size={24} />}/>
 			</div>
 			{isOpen && (
 				<div className="menu_container">
@@ -60,9 +59,7 @@ const MenuSettings = () => {
 						</div>
 					</form>
 					</div>
-					<button type="submit">
-						Save
-					</button>
+					<Button text="Save" type="submit"/>
 				</div>
 			)}
 		</>
