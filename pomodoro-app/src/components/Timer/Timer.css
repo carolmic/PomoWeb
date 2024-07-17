@@ -1,0 +1,37 @@
+h1 {
+  color: var(--white);
+  font-weight: 400;
+}
+
+button {
+  background-color: var(--white);
+  color: var(--black);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--gray);
+  }
+}
+
+.start_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.time_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.timer_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
