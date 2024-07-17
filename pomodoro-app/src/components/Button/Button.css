@@ -1,0 +1,26 @@
+button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.App.light button {
+  background-color: var(--white);
+  color: var(--black);
+
+  &:hover {
+    background-color: var(--secondary);
+    color: var(--white);
+  }
+}
+
+.App.dark button {
+  background-color: var(--white);
+  color: var(--black);
+
+  &:hover {
+    background-color: var(--quaernary);
+    color: var(--white);
+  }
+}

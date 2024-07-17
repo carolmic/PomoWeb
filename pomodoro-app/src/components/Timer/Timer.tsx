@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
+import { useMenu } from "../../context/MenuContext";
+import { useTimer } from "../../context/PomodoroContext";
+import { useTheme } from "../../context/ThemeContext";
 import "./Timer.css";
+import Button from "../Button/Button";
+import BackgroundMusic from "../BackgroundMusic/BackgroundMusic";
 
-interface TimerProps {
-  initialTime?: number;
-}
-
-const Timer = ({initialTime}: TimerProps) => {
-	const [time, setTime] = useState(initialTime || 0);
+const Timer = () => {
+	const { pomodoroTime, setPomodoroTime } = useTimer();
 	const [isActive, setIsActive] = useState(false);
+	const { theme, toggleTheme } = useTheme();
+	const { checked } = useMenu();
 
 	useEffect(() => {
 		let interval: ReturnType<typeof setInterval>;
 		if (isActive) {
 			interval = setInterval(() => {
-				setTime((prevTime) => {
+				setPomodoroTime((prevTime) => {
 					if (prevTime <= 1) {
 						clearInterval(interval);
 						return 0;
@@ -27,8 +30,18 @@ const Timer = ({initialTime}: TimerProps) => {
 	}, [isActive]);
 
 	const startTimer = () => {
+		if (checked) {
+			toggleTheme();
+		}
 		setIsActive(true);
 	};
+
+	const stopTimer = () => {
+		if (checked) {
+			toggleTheme();
+		}
+		setIsActive(false);
+	}
 
   const convertTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -38,16 +51,12 @@ const Timer = ({initialTime}: TimerProps) => {
 
 	return (
 		<div className="timer_container">
-			<h1>{convertTime(time)}</h1>
+			<h1>{convertTime(pomodoroTime)}</h1>
 			<div className="start_buttons">
-				<button className="start" onClick={startTimer}>Start</button>
-				<button onClick={() => setIsActive(false)}>Stop</button>
-        <button onClick={() => setTime(0)}>Reset</button>
+				<Button text="Start" onClick={startTimer} />
+				<Button text="Stop" onClick={stopTimer} />
 			</div>
-			{/* <div className="time_buttons">
-				<button>-</button>
-				<button onClick={() => setTime((prev) => prev + 1)}>+</button>
-			</div> */}
+			{isActive && <BackgroundMusic play={isActive} />}
 		</div>
 	);
 };
