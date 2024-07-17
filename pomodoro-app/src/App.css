@@ -5,4 +5,5 @@
   align-items: center;
   height: 100vh;
   gap: 3rem;
+  position: relative;
 }
