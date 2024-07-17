@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+import { useMenu } from "../../context/MenuContext";
 import { useTimer } from "../../context/PomodoroContext";
+import { useTheme } from "../../context/ThemeContext";
 import "./Timer.css";
 
 const Timer = () => {
 	const { pomodoroTime, setPomodoroTime } = useTimer();
-	// const [time, setTime] = useState(pomodoroTime);
 	const [isActive, setIsActive] = useState(false);
+	const { theme, toggleTheme } = useTheme();
+	const { checked } = useMenu();
 
 	useEffect(() => {
 		let interval: ReturnType<typeof setInterval>;
@@ -25,6 +28,10 @@ const Timer = () => {
 	}, [isActive]);
 
 	const startTimer = () => {
+		console.log('Tema',theme);
+		if (checked) {
+			toggleTheme();
+		}
 		setIsActive(true);
 	};
 
@@ -40,7 +47,6 @@ const Timer = () => {
 			<div className="start_buttons">
 				<button className="start" onClick={startTimer}>Start</button>
 				<button onClick={() => setIsActive(false)}>Stop</button>
-        <button onClick={() => setPomodoroTime(0)}>Reset</button>
 			</div>
 		</div>
 	);

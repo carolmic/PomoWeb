@@ -1,9 +1,10 @@
 .settings_container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    padding-top: 2rem;
 }
 
 .settings_button {
@@ -13,20 +14,25 @@
   }
 }
 
-.menu {
+.menu_container {
   position: absolute;
-  transform: translate;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   left: calc(50% - 17.5rem);
   top: calc(50% - 25%);
-  padding: 1rem;
-  height: 50%;
-  background-color: var(--white);
   z-index: 1;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
   width: 35rem;
   
   h1 {
@@ -56,15 +62,26 @@ input {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
   width: 100%;
-  padding: 1rem;
   gap: 1rem;
 }
 
 .line {
   border: 1px solid var(--gray);
   width: 100%;
-  margin: 1rem;
+  margin: 1rem 0;
+}
 
+.title { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.form_component {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 }

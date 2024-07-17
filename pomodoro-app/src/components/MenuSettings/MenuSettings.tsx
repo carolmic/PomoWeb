@@ -1,5 +1,7 @@
+import Switch from "@mui/material/Switch";
 import { useEffect, useState } from "react";
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoCloseOutline, IoSettingsOutline } from "react-icons/io5";
+import { useMenu } from "../../context/MenuContext";
 import { useTimer } from "../../context/PomodoroContext";
 import "./MenuSettings.css";
 
@@ -7,12 +9,17 @@ const MenuSettings = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [time, setTime] = useState(25);
 	const { setPomodoroTime } = useTimer();
+	const { checked, setChecked } = useMenu();
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		setPomodoroTime(convertTime);
-    setIsOpen(false);
+		setIsOpen(false);
 	};
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+  };
 
 	const convertTime = () => {
 		const newTime = time * 60;
@@ -31,19 +38,31 @@ const MenuSettings = () => {
 				</button>
 			</div>
 			{isOpen && (
-				<div className="menu">
-					<h1>Settings</h1>
-          <div className="line"></div>
+				<div className="menu_container">
+					<div className="menu">
+					<div className="title">
+						<h1>Settings</h1>
+						<IoCloseOutline onClick={() => setIsOpen(false)} size={24} />
+					</div>
 					<form className="form" onSubmit={handleSubmit}>
-            <p>Pomodoro</p>
+						<div className="line"></div>
+						<p>Pomodoro</p>
 						<input
 							type="number"
 							value={time}
 							onChange={(e) => setTime(e.target.valueAsNumber)}
 							placeholder="pomodoro"
 						/>
-						<button type="submit">Enviar</button>
+						<div className="line"></div>
+						<div className="form_component">
+							<p>Dark Mode when running</p>
+							<Switch checked={checked} onChange={handleChange} />
+						</div>
 					</form>
+					</div>
+					<button type="submit">
+						Save
+					</button>
 				</div>
 			)}
 		</>

@@ -12,7 +12,8 @@ button {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--gray);
+    background-color: var(--secondary);
+    color: var(--white);
   }
 }
 
