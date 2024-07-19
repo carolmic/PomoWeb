@@ -1,5 +1,6 @@
 import "./App.css";
 import MenuSettings from "./components/MenuSettings/MenuSettings";
+import TaskList from "./components/TaskList/TaskList";
 import Timer from "./components/Timer/Timer";
 import { MenuProvider } from "./context/MenuContext";
 import { PomodoroProvider } from "./context/PomodoroContext";
@@ -26,6 +27,7 @@ const MainApp: React.FC = () => {
 				<MenuSettings />
 				<img src="src/assets/Tomate.svg" alt="tomato icon" />
 				<Timer />
+				<TaskList />
 			</div>
 		</div>
 	);
