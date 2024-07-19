@@ -10,7 +10,7 @@ import "./MenuSettings.css";
 const MenuSettings = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [time, setTime] = useState(25);
-	const { setPomodoroTime, pomodoroTime } = useTimer();
+	const { setPomodoroTime } = useTimer();
 	const { checked, setChecked } = useMenu();
 
 	const handleSubmit = (e: React.FormEvent) => {
