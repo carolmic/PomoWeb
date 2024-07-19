@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { IoCloseOutline, IoSettingsOutline } from "react-icons/io5";
 import { useMenu } from "../../context/MenuContext";
 import { useTimer } from "../../context/PomodoroContext";
-import "./MenuSettings.css";
 import Button from "../Button/Button";
+import Input from "../Input/Input";
+import "./MenuSettings.css";
 
 const MenuSettings = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ const MenuSettings = () => {
 					<form className="form" onSubmit={handleSubmit}>
 						<div className="line"></div>
 						<p>Pomodoro</p>
-						<input
+						<Input
 							type="number"
 							value={time}
 							onChange={(e) => setTime(e.target.valueAsNumber)}

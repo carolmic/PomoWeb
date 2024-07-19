@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 4rem;
     padding-top: 2rem;
 }
 
@@ -39,22 +39,6 @@
     font-size: 1.5rem;
     color: var(--black) !important;
     margin: 0;
-  }
-}
-
-input {
-  padding: 0.5rem;
-  border: 1px solid var(--gray);
-  border-radius: 4px;
-
-  &:active{
-    border: 1px solid var(--dark-gray) !important;
-    outline: none;
-  }
-
-  &:focus{
-    border: 1px solid var(--dark-gray) !important;
-    outline: none;
   }
 }
 

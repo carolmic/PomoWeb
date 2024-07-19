@@ -1,0 +1,17 @@
+.custom_input {
+  padding: 0.5rem;
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:active {
+    border: 1px solid var(--dark-gray) !important;
+    outline: none;
+  }
+
+  &:focus {
+    border: 1px solid var(--dark-gray) !important;
+    outline: none;
+  }
+}
