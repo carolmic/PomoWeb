@@ -10,7 +10,7 @@ import "./MenuSettings.css";
 const MenuSettings = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [time, setTime] = useState(25);
-	const { setPomodoroTime } = useTimer();
+	const { setPomodoroTime, pomodoroTime } = useTimer();
 	const { checked, setChecked } = useMenu();
 
 	const handleSubmit = (e: React.FormEvent) => {
@@ -29,8 +29,10 @@ const MenuSettings = () => {
 	};
 
 	useEffect(() => {
+		console.log("time", time);
 		setPomodoroTime(convertTime);
-	}, []);
+		console.log("time", pomodoroTime);
+	}, [time]);
 
 	return (
 		<>
@@ -60,7 +62,7 @@ const MenuSettings = () => {
 						</div>
 					</form>
 					</div>
-					<Button text="Save" type="submit"/>
+					<Button text="Save" type="submit" onClick={() => setIsOpen(!isOpen)}/>
 				</div>
 			)}
 		</>
