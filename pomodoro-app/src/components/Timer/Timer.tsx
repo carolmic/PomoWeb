@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { useMenu } from "../../context/MenuContext";
 import { useTimer } from "../../context/PomodoroContext";
 import { useTheme } from "../../context/ThemeContext";
-import "./Timer.css";
-import Button from "../Button/Button";
 import BackgroundMusic from "../BackgroundMusic/BackgroundMusic";
+import Button from "../Button/Button";
+import "./Timer.css";
 
 const Timer = () => {
 	const { pomodoroTime, setPomodoroTime } = useTimer();
 	const [isActive, setIsActive] = useState(false);
-	const { theme, toggleTheme } = useTheme();
+	const { toggleTheme } = useTheme();
 	const { checked } = useMenu();
 
 	useEffect(() => {
