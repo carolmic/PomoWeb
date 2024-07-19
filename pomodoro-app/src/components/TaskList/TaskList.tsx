@@ -4,7 +4,7 @@ import TaskComponent from "./TaskComponent/TaskComponent";
 import "./TaskList.css";
 
 const TaskList = () => {
-	const { tasks, addTask, updateTask } =
+	const { tasks, addTask, updateTask, removeTask } =
 		useTasks();
 		
 	const handleAddTask = () => {
@@ -21,11 +21,11 @@ const TaskList = () => {
 	return (
 		<div className="tasklist">
 			{tasks.map((task) => (
-				<TaskComponent key={task.id} task={task} onSave={() => updateTask} />
+				<TaskComponent key={task.id} task={task} onSave={() => updateTask} onDelete={() => removeTask(task.id)} />
 			))}
 			<div className="tasklist_addtask">
 				<IoAdd />
-				<span onClick={handleAddTask}>Add Task</span>
+				<span onClick={handleAddTask}>Create Task</span>
 			</div>
 		</div>
 	);

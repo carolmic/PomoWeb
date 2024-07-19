@@ -11,9 +11,10 @@ interface TaskProps {
 		completed: boolean;
 	};
 	onSave: (task: { text: string; completed: boolean }) => void;
+	onDelete: () => void;
 }
 
-const Task = ({ task, onSave }: TaskProps) => {
+const Task = ({ task, onSave, onDelete }: TaskProps) => {
 	const [isEditing, setIsEditing] = useState(!task);
 	const [text, setText] = useState(task ? task.text : "");
 	const [isCompleted, setIsCompleted] = useState(task ? task.completed : false);
@@ -69,7 +70,8 @@ const Task = ({ task, onSave }: TaskProps) => {
 			</div>
 			{isMenuOpen && (
 				<div className="task_menu">
-					<Button text="Edit task" onClick={handleEditTask} />
+					<Button text="Edit" onClick={handleEditTask} />
+					<Button text="Delete" onClick={onDelete}/>
 				</div>
 			)}
 			{isEditing && <Button text="Save" onClick={handleSave} />}

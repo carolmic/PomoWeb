@@ -10,6 +10,7 @@ const useTasks = () => {
 
 	const removeTask = (id: string) => {
 		setTasks(tasks.filter((task) => task.id !== id));
+		console.log(tasks);
 	};
 
 	const updateTask = (id: string, updatedTask: Task) => {
