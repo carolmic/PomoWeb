@@ -1,3 +1,4 @@
+import tomatoIcon from 'src/assets/Tomate.svg';
 import "./App.css";
 import MenuSettings from "./components/MenuSettings/MenuSettings";
 import TaskList from "./components/TaskList/TaskList";
@@ -25,7 +26,7 @@ const MainApp: React.FC = () => {
 		<div className={`App ${theme}`}>
 			<div className="container">
 				<MenuSettings />
-				<img src="src/assets/Tomate.svg" alt="tomato icon" />
+				<img src={tomatoIcon} alt="tomato icon" />
 				<Timer />
 				<TaskList />
 			</div>
