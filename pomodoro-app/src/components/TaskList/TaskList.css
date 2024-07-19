@@ -16,14 +16,22 @@
     }
 }
 
+.App.light .tasklist_addtask {
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.App.dark .tasklist_addtask {
+    background-color: var(--quaternary);
+    color: var(--white);
+}
+
 .tasklist_addtask {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   cursor: pointer;
-  color: var(--white);
-  background-color: var(--secondary);
   padding: 1rem;
   border-radius: 8px;
   width: 100%;

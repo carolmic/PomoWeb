@@ -4,8 +4,6 @@
 	justify-content: space-between;
 	gap: 2rem;
 	width: 25rem;
-	background-color: var(--light-red);
-	color: var(--dark-gray);
 	border-radius: 8px;
 	padding: 0.5rem 1rem;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -13,6 +11,16 @@
 	@media (max-width: 768px) {
 		width: 90%;
 	}
+}
+
+.App.light .task {
+	background-color: var(--light-red);
+	color: var(--dark-gray);
+}
+
+.App.dark .task {
+	background-color: var(--light-blue);
+	color: var(--white);
 }
 
 .task_content {
