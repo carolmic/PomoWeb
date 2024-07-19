@@ -1,5 +1,5 @@
-import tomatoIcon from 'src/assets/Tomate.svg';
 import "./App.css";
+import tomatoIcon from './assets/Tomate.svg';
 import MenuSettings from "./components/MenuSettings/MenuSettings";
 import TaskList from "./components/TaskList/TaskList";
 import Timer from "./components/Timer/Timer";
