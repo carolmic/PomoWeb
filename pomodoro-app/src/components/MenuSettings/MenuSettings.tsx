@@ -29,9 +29,7 @@ const MenuSettings = () => {
 	};
 
 	useEffect(() => {
-		console.log("time", time);
 		setPomodoroTime(convertTime);
-		console.log("time", pomodoroTime);
 	}, [time]);
 
 	return (
