@@ -11,7 +11,7 @@
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 	@media (max-width: 768px) {
-		width: 100%;
+		width: 90%;
 	}
 }
 
@@ -19,27 +19,20 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	width: 50%;
+	width: auto;
 }
 
 .task_conteiner {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	width: 100%;
+	justify-content: center;
 	gap: 0.5rem;
 }
-
-/* .task input[type="text"] {
-  flex: 1;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 4px;
-} */
 
 .task span {
   font-size: 16px;
 	font-weight: 500;
   padding: 5px;
   cursor: pointer;
+	width: auto;
 }
