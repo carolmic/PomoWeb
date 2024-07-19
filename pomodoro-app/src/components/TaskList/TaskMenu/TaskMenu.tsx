@@ -1,12 +1,14 @@
 interface TaskMenuProps {
-	isEditing: boolean;
-	setIsEditing: (isEditing: boolean) => void;
+	menuMessage: string;
+	onClick?: () => void;
 }
 
-const TaskMenu = ({ isEditing, setIsEditing }: TaskMenuProps) => {
+const TaskMenu = ({ menuMessage, onClick }: TaskMenuProps) => {
 	return (
 		<div>
-			<button onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Save' : 'Edit'}</button>
+			<button onClick={onClick}>
+				{menuMessage}
+			</button>
 		</div>
 	);
 };

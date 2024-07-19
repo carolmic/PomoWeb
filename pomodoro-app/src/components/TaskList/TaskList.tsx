@@ -1,9 +1,10 @@
 import TaskComponent from "./TaskComponent/TaskComponent";
 
 const TaskList = () => {
+	const task = { text: "teste", completed: false };
 	return (
 		<div>
-			<TaskComponent />
+			<TaskComponent task={task} onSave={(task) => {}}/>
 		</div>
 	);
 };
