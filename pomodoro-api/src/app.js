@@ -1,6 +1,7 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import gridfsStream from "gridfs-stream";
+import mongodb from "mongodb";
 import mongoose from "mongoose";
 import multer from "multer";
 import { GridFsStorage } from "multer-gridfs-storage";
@@ -12,6 +13,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.static("public"));
+app.use(cors());
 
 const storage = new GridFsStorage({
 	url: process.env.MONGODB_URI,
@@ -22,13 +24,12 @@ const storage = new GridFsStorage({
 	},
 });
 
-// Configurar o GridFS Stream
-gridfsStream.mongo = mongoose.mongo;
-let gfs;
-
+let gfsBucket;
 db.once("open", () => {
-	gfs = gridfsStream(db.db, mongoose.mongo);
-	gfs.collection("audio");
+	const connection = mongoose.connection.db;
+	gfsBucket = new mongodb.GridFSBucket(connection, {
+		bucketName: "fs",
+	});
 });
 
 const upload = multer({ storage });
@@ -46,8 +47,34 @@ app.get("/files", async (req, res) => {
 		let files = await db.collection("fs.files").find().toArray();
 		res.json({ files });
 	} catch (err) {
-    console.error(err);
+		console.error(err);
 		res.json({ err });
+	}
+});
+
+app.get("/download/:filename", async (req, res) => {
+	try {
+		const { filename } = req.params;
+
+		if (!gfsBucket) {
+			return res.status(500).json({ err: "GridFS not initialized" });
+		}
+
+		const file = await db.collection("fs.files").findOne({ filename });
+		if (!file) {
+			return res.status(404).json({ err: "No file exists" });
+		}
+
+		const downloadStream = gfsBucket.openDownloadStream(file._id);
+		downloadStream.on("error", (err) => {
+			console.error("Error in download stream:", err);
+			res.status(500).json({ err: "Error in download stream" });
+		});
+		downloadStream.pipe(res);
+		res.status(200).json({ message: "Download successful" });
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ err: "Internal Server Error" });
 	}
 });
 
