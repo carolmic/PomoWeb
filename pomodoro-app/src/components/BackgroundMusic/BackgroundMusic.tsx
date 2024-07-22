@@ -43,8 +43,7 @@ const BackgroundMusic = ({ play }: BackgroundMusicProps) => {
 	};
 
 	useEffect(() => {
-		let interval: ReturnType<typeof setInterval>;
-		interval = setInterval(() => {
+		let interval = setInterval(() => {
 			if (audioRef.current?.ended) {
 				handleSkip();
 				if (currentAudio) {
@@ -52,6 +51,7 @@ const BackgroundMusic = ({ play }: BackgroundMusicProps) => {
 					audioRef.current?.play();
 				}
 			}		
+			interval;
 		}, 1000);
 	}, [currentAudio]);
 
