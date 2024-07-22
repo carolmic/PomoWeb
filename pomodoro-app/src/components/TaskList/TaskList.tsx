@@ -23,9 +23,9 @@ const TaskList = () => {
 			{tasks.map((task) => (
 				<TaskComponent key={task.id} task={task} onSave={() => updateTask} onDelete={() => removeTask(task.id)} />
 			))}
-			<div className="tasklist_addtask">
+			<div onClick={handleAddTask} className="tasklist_addtask">
 				<IoAdd />
-				<span onClick={handleAddTask}>Create Task</span>
+				<span>Create Task</span>
 			</div>
 		</div>
 	);

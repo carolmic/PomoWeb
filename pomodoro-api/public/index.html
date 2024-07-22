@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Streaming</title>
+  <script src="/pomodoro-api/src/app.js"></script>
+</head>
+<body>
+  <form enctype="multipart/form-data" action="http://localhost:3000/upload_files" method="POST">
+    <label for="file-upload">Select file:</label>
+    <input id="file-upload" type="file" name="file"/>
+    <input type="submit" value="POST to server"></input>
+  </form>
+</body>
+</html>
