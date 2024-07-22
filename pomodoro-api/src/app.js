@@ -70,8 +70,8 @@ app.get("/download/:filename", async (req, res) => {
 			console.error("Error in download stream:", err);
 			res.status(500).json({ err: "Error in download stream" });
 		});
+    res.setHeader("Content-Type", file.contentType);
 		downloadStream.pipe(res);
-		res.status(200).json({ message: "Download successful" });
 	} catch (err) {
 		console.error(err);
 		res.status(500).json({ err: "Internal Server Error" });
