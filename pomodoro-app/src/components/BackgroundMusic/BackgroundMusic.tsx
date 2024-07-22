@@ -14,7 +14,6 @@ const BackgroundMusic = ({ play }: BackgroundMusicProps) => {
 			try {
 				const response = await fetch("http://localhost:3000/files");
 				const data = await response.json();
-				// Adicione o URL base ao nome do arquivo
 				const filesWithUrls = data.files.map((file: any) => ({
 					...file,
 					url: `${baseUrl}${file.filename}`,
