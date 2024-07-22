@@ -11,6 +11,16 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
+
+const storage = new GridFsStorage({
+  url: process.env.MONGODB_URI,
+  file: (req, file) => {
+    return {
+      filename: file.originalname
+    };
+  }
+});
 
 // Configurar o GridFS Stream
 gridfsStream.mongo = mongoose.mongo;
@@ -21,37 +31,14 @@ db.once('open', () => {
   gfs.collection('audio');
 });
 
-// Configurar o Multer Storage
-const storage = new GridFsStorage({
-  url: process.env.MONGODB_URI,
-  options: { useNewUrlParser: true, useUnifiedTopology: true },
-  file: (req, file) => {
-    return {
-      bucketName: 'audio', // Coleção onde os arquivos serão armazenados
-      filename: `${Date.now()}_${file.originalname}`
-    };
-  }
-});
-
 const upload = multer({ storage });
 
-// Rota para upload de arquivos de áudio
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.status(201).send({ file: req.file });
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
 });
 
-// Rota para download de arquivos de áudio
-app.get('/audio/:filename', (req, res) => {
-  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-    if (!file || file.length === 0) {
-      return res.status(404).json({
-        err: 'No file exists'
-      });
-    }
-
-    const readstream = gfs.createReadStream(file.filename);
-    readstream.pipe(res);
-  });
+app.post('/upload_files', upload.single('file'), (req, res) => {
+  res.send({ message: 'Successfully uploaded files' })
 });
 
 app.listen(3000, () => {
