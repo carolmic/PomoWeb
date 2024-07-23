@@ -7,12 +7,12 @@ interface BackgroundMusicProps {
 const BackgroundMusic = ({ play }: BackgroundMusicProps) => {
 	const [files, setFiles] = useState<any[]>([]);
 	const [currentAudio, setCurrentAudio] = useState<string>("");
-	const baseUrl = "http://pomodoro-api.eba-psvtrnjk.us-east-2.elasticbeanstalk.com/download/";
+	const baseUrl = "https://pomodoro-api.eba-psvtrnjk.us-east-2.elasticbeanstalk.com/download/";
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch("http://pomodoro-api.eba-psvtrnjk.us-east-2.elasticbeanstalk.com/files");
+				const response = await fetch("https://pomodoro-api.eba-psvtrnjk.us-east-2.elasticbeanstalk.com/files");
 				const data = await response.json();
 				const filesWithUrls = data.files.map((file: any) => ({
 					...file,
