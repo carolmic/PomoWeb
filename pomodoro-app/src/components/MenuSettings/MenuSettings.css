@@ -26,6 +26,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    left: calc(15% - 2%);
+    top: calc(50% - 25%);
+  }
 }
 
 .menu {
@@ -39,6 +44,10 @@
     font-size: 1.5rem;
     color: var(--black) !important;
     margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 }
 
