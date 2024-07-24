@@ -7,12 +7,12 @@ interface BackgroundMusicProps {
 const BackgroundMusic = ({ play }: BackgroundMusicProps) => {
 	const [files, setFiles] = useState<any[]>([]);
 	const [currentAudio, setCurrentAudio] = useState<string>("");
-	const baseUrl = "http://localhost:3000/download/";
+	const baseUrl = "http://localhost:8080/download/";
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch("http://localhost:3000/files");
+				const response = await fetch("http://localhost:8080/files");
 				const data = await response.json();
 				const filesWithUrls = data.files.map((file: any) => ({
 					...file,
