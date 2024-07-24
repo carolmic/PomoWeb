@@ -4,6 +4,7 @@
   border-radius: 4px;
   font-size: 16px;
   font-weight: 500;
+  width: 100%;
 
   &:active {
     border: 1px solid var(--dark-gray) !important;

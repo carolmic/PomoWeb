@@ -28,7 +28,8 @@
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    left: calc(15% - 2%);
+    right: calc(50% - 25%);
+    left: calc(50% - 25%);
     top: calc(50% - 25%);
   }
 }
@@ -47,7 +48,7 @@
   }
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: auto;
   }
 }
 
@@ -77,4 +78,8 @@
   gap: 1rem;
   align-items: center;
   justify-content: center;
+
+  p{
+    font-size: 0.85rem;
+  }
 }
