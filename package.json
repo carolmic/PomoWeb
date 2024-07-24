@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix pomodoro-app\" \"npm run dev --prefix pomodoro-api\"",
-    "build": "npm run build --prefix pomodoro-app"
+    "dev": "concurrently \"npm run dev --prefix pomodoro-app\" \"npm run dev --prefix pomodoro-api\""
   },
   "dependencies": {
     "react-icons": "^5.2.1"
