@@ -7,7 +7,6 @@ import db from "./src/config/dbConnect.js";
 import endpoints from "./src/routes/endpoints.js";
 import swaggerSetup from "./swagger.js";
 
-// Carregar variáveis de ambiente do arquivo .env
 dotenv.config();
 
 const app = express();

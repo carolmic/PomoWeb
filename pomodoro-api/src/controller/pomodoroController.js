@@ -1,4 +1,14 @@
+import mongodb from "mongodb";
+import mongoose from "mongoose";
 import db from "../config/dbConnect.js";
+
+let gfsBucket;
+db.once("open", () => {
+	const connection = mongoose.connection.db;
+	gfsBucket = new mongodb.GridFSBucket(connection, {
+		bucketName: "fs",
+	});
+});
 
 class PomodoroController {
 	static listAllFiles = async (req, res) => {
@@ -16,6 +26,7 @@ class PomodoroController {
 			const { filename } = req.params;
 
 			if (!gfsBucket) {
+				console.log("GridFS not initialized");
 				return res.status(500).json({ err: "GridFS not initialized" });
 			}
 
