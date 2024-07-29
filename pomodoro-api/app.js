@@ -14,7 +14,7 @@ app.use("/api", endpoints);
 app.use("/api-docs", swaggerSetup);
 
 app.listen(8080, () => {
-	console.log("Server running at http://localhost:8080");
+	console.log("Server running at http://localhost:8080/api-docs");
 });
 
 export default app;
