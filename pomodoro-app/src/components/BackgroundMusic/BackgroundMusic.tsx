@@ -1,22 +1,20 @@
-import { useRef } from 'react';
-import lofi from '../../assets/summer-rain-lofi.mp3';
+import ReactPlayer from "react-player";
 
 interface BackgroundMusicProps {
 	play: boolean;
 }
 
-const BackgroundMusic = ({ play }: BackgroundMusicProps ) => {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-	if (play && audioRef.current) {
-		audioRef?.current?.play();
-	} else {
-		audioRef?.current?.pause();
-	}
-
-  return (
-		<audio ref={audioRef} src={lofi} loop />
-  );
+const BackgroundMusic = ({ play }: BackgroundMusicProps) => {
+	return (
+		<>
+			<ReactPlayer
+				url="https://www.youtube.com/watch?v=ItMqnBjGtoY&t=6376s"
+				playing={play}
+				controls={false}
+				style={{ display: "none" }}
+			/>
+		</>
+	);
 };
 
 export default BackgroundMusic;
